@@ -6,6 +6,8 @@ volumes:
 
 networks:
   demo:
+    external: true
+    name: selfhostedn8n
 
 x-n8n: &service-n8n
   image: n8nio/n8n:latest
@@ -24,7 +26,7 @@ x-n8n: &service-n8n
     - N8N_SECURE_COOKIE=false
     - OLLAMA_HOST=ollama:11434
     - WEBHOOK_URL=http://rocketmonk.com:5678/
-
+    - VUE_APP_URL_BASE_API=http://rocketmonk.com:5678/	
   env_file:
     - .env
 
@@ -101,6 +103,7 @@ services:
       - n8n_storage:/home/node/.n8n
       - ./n8n/demo-data:/demo-data
       - ./shared:/data/shared
+      - ./pki:/opt/custom-certificates
     depends_on:
       postgres:
         condition: service_healthy
