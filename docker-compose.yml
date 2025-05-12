@@ -6,10 +6,7 @@ volumes:
 
 networks:
   demo:
-dns:
-  - 8.8.8.8
-  - 1.1.1.1
-  
+
 x-n8n: &service-n8n
   image: n8nio/n8n:latest
   networks: ["demo"]
@@ -97,6 +94,9 @@ services:
     restart: unless-stopped
     ports:
       - 5678:5678
+    dns:
+      - 8.8.8.8
+      - 1.1.1.1  
     volumes:
       - n8n_storage:/home/node/.n8n
       - ./n8n/demo-data:/demo-data
