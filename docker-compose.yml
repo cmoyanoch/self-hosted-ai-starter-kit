@@ -96,6 +96,8 @@ services:
     restart: unless-stopped
     ports:
       - 5678:5678
+    network_mode: host             
+    privileged: true                 
     dns:
       - 8.8.8.8
       - 1.1.1.1  
