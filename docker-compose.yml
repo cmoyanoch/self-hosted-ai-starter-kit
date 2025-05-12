@@ -104,6 +104,7 @@ services:
       - ./n8n/demo-data:/demo-data
       - ./shared:/data/shared
       - ./pki:/opt/custom-certificates
+      - ./resolv.override.conf:/etc/resolv.conf 
     depends_on:
       postgres:
         condition: service_healthy
