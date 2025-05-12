@@ -6,7 +6,10 @@ volumes:
 
 networks:
   demo:
-
+dns:
+  - 8.8.8.8
+  - 1.1.1.1
+  
 x-n8n: &service-n8n
   image: n8nio/n8n:latest
   networks: ["demo"]
