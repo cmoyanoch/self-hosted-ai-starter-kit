@@ -10,7 +10,7 @@ networks:
     name: selfhostedn8n
 
 x-n8n: &service-n8n
-  image: n8nio/n8n:latest
+  image: n8n-fixed-dns
   networks: ["demo"]
   environment:
     - DB_TYPE=postgresdb
